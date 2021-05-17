@@ -11,6 +11,7 @@ import CoreData
 // GAMES no plural representa nossa lista de jogos
 class GamesTableViewController: UITableViewController {
 
+    //MARK: - Proprieties
     var fetchedResultController: NSFetchedResultsController<Game>!
     
     // tip. podemos passar qual view vai gerenciar a busca. Neste caso a própria viewController (logo usei nil)
@@ -26,9 +27,18 @@ class GamesTableViewController: UITableViewController {
         return label
     }()
     
+    //MARK: Lifecicle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        changingBackgroundColorOfSeachBar()
+     
+        loadGames()
+    }
+    
+    //MARK: - Private Functions
+    
+    fileprivate func changingBackgroundColorOfSeachBar() {
         // altera comportamento default que adicionava background escuro sobre a view principal
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.tintColor = .white
@@ -39,21 +49,19 @@ class GamesTableViewController: UITableViewController {
         // usando extensions
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
-        
         /*
-        FIX BUG black screen
-        Source: https://stackoverflow.com/questions/38836862/tab-bar-view-goes-blank-when-switched-back-to-with-search-bar-active
-        */
+         FIX BUG black screen
+         Source: https://stackoverflow.com/questions/38836862/tab-bar-view-goes-blank-when-switched-back-to-with-search-bar-active
+         */
         self.definesPresentationContext = true
         searchController.definesPresentationContext = true
-        
-        loadGames()
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+
     }
     
-    
-    
     // valor default evita precisar ser obrigado a passar o argumento quando chamado
-    func loadGames(filtering: String = "") {
+    fileprivate func loadGames(filtering: String = "") {
         let fetchRequest: NSFetchRequest<Game> = Game.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -100,15 +108,6 @@ class GamesTableViewController: UITableViewController {
         
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     
     // Override to support editing the table view.
@@ -125,22 +124,6 @@ class GamesTableViewController: UITableViewController {
         }
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
 
@@ -164,6 +147,7 @@ class GamesTableViewController: UITableViewController {
 
 } // fim de classe
 
+//MARK: - Extensions
 
 extension GamesTableViewController: NSFetchedResultsControllerDelegate {
  
@@ -181,11 +165,13 @@ extension GamesTableViewController: NSFetchedResultsControllerDelegate {
                 tableView.reloadData()
         }
     }
-} // fim da classe
+} // fim extension
 
 extension GamesTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        // TODO
+        loadGames(filtering: searchController.searchBar.text!)
+        tableView.reloadData()
+        
     }
  
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -198,5 +184,5 @@ extension GamesTableViewController: UISearchResultsUpdating, UISearchBarDelegate
         loadGames(filtering: searchBar.text!)
         tableView.reloadData()
     }
-}
+} // fim extension
 

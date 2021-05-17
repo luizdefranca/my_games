@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KBN-xk-aTJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -92,7 +91,7 @@
         <!--Adicionar-->
         <scene sceneID="aVy-gX-89g">
             <objects>
-                <viewController id="3L9-bj-8cU" customClass="AddEditViewController" customModule="MyGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3L9-bj-8cU" customClass="AddEditGameViewController" customModule="MyGames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4aV-Nb-yUg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvf-UG-apx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5086" y="-68"/>
+            <point key="canvasLocation" x="5001" y="359"/>
         </scene>
         <!--Jogos-->
         <scene sceneID="Sei-QO-cPH">
@@ -326,7 +325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De1-vH-Bpq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3763.7681159420295" y="689.73214285714278"/>
+            <point key="canvasLocation" x="3732" y="449"/>
         </scene>
         <!--Plataformas-->
         <scene sceneID="VqT-hu-ixo">
@@ -374,9 +373,87 @@
             </objects>
             <point key="canvasLocation" x="820.28985507246387" y="594.64285714285711"/>
         </scene>
+        <!--Adicionar-->
+        <scene sceneID="0mx-7W-iOU">
+            <objects>
+                <viewController id="MIs-dn-HaJ" customClass="AddConsoleViewController" customModule="MyGames" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rw8-SY-9HD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome da plataforma" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOF-Fh-wf5">
+                                <rect key="frame" x="25" y="69" width="364" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YRJ-RY-uvX">
+                                <rect key="frame" x="25" y="271" width="364" height="364"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YRJ-RY-uvX" secondAttribute="height" multiplier="1:1" id="jVl-SD-Zfl"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-T5-HF9">
+                                <rect key="frame" x="25" y="807" width="364" height="30"/>
+                                <color key="backgroundColor" name="second"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="SALVAR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addEditGame:" destination="MIs-dn-HaJ" eventType="touchUpInside" id="Q1h-ne-EsN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1t-7S-6WE">
+                                <rect key="frame" x="25" y="245" width="364" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjY-VC-KTn">
+                                <rect key="frame" x="70.5" y="438" width="273" height="30"/>
+                                <state key="normal" title="Toque para adicionar a imagem de capa"/>
+                                <connections>
+                                    <action selector="AddEditCover:" destination="MIs-dn-HaJ" eventType="touchUpInside" id="eVj-Ab-1XP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GtK-rA-FKN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GtK-rA-FKN" firstAttribute="trailing" secondItem="VOF-Fh-wf5" secondAttribute="trailing" constant="25" id="4hw-WN-5Sy"/>
+                            <constraint firstItem="YRJ-RY-uvX" firstAttribute="centerX" secondItem="GtK-rA-FKN" secondAttribute="centerX" id="507-xW-Dlf"/>
+                            <constraint firstItem="YRJ-RY-uvX" firstAttribute="leading" secondItem="GtK-rA-FKN" secondAttribute="leading" constant="25" id="I5k-YK-eAp"/>
+                            <constraint firstItem="YRJ-RY-uvX" firstAttribute="top" secondItem="B1t-7S-6WE" secondAttribute="bottom" constant="8" id="IiN-iP-eh4"/>
+                            <constraint firstItem="GtK-rA-FKN" firstAttribute="bottom" secondItem="zJO-T5-HF9" secondAttribute="bottom" constant="25" id="JpC-g1-iQH"/>
+                            <constraint firstItem="YRJ-RY-uvX" firstAttribute="centerY" secondItem="GtK-rA-FKN" secondAttribute="centerY" id="K0h-sg-atT"/>
+                            <constraint firstItem="bjY-VC-KTn" firstAttribute="centerY" secondItem="YRJ-RY-uvX" secondAttribute="centerY" id="KUX-YV-1w3"/>
+                            <constraint firstItem="VOF-Fh-wf5" firstAttribute="leading" secondItem="GtK-rA-FKN" secondAttribute="leading" constant="25" id="MgV-zi-6vb"/>
+                            <constraint firstItem="VOF-Fh-wf5" firstAttribute="top" secondItem="GtK-rA-FKN" secondAttribute="top" constant="25" id="NOR-wq-FOq"/>
+                            <constraint firstItem="bjY-VC-KTn" firstAttribute="centerX" secondItem="YRJ-RY-uvX" secondAttribute="centerX" id="O1m-xP-pqp"/>
+                            <constraint firstItem="GtK-rA-FKN" firstAttribute="trailing" secondItem="zJO-T5-HF9" secondAttribute="trailing" constant="25" id="dfm-Kl-wi8"/>
+                            <constraint firstItem="YRJ-RY-uvX" firstAttribute="width" secondItem="zJO-T5-HF9" secondAttribute="width" id="dtO-86-2n6"/>
+                            <constraint firstItem="B1t-7S-6WE" firstAttribute="leading" secondItem="GtK-rA-FKN" secondAttribute="leading" constant="25" id="h0S-e5-ZZD"/>
+                            <constraint firstItem="GtK-rA-FKN" firstAttribute="trailing" secondItem="YRJ-RY-uvX" secondAttribute="trailing" constant="25" id="iSX-Su-R75"/>
+                            <constraint firstItem="GtK-rA-FKN" firstAttribute="trailing" secondItem="B1t-7S-6WE" secondAttribute="trailing" constant="25" id="s8I-Tm-yTs"/>
+                            <constraint firstItem="zJO-T5-HF9" firstAttribute="leading" secondItem="GtK-rA-FKN" secondAttribute="leading" constant="25" id="z3n-p9-Ies"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Adicionar" largeTitleDisplayMode="never" id="0Ur-YG-NgI"/>
+                    <connections>
+                        <outlet property="btAddEdit" destination="zJO-T5-HF9" id="9uP-W0-qKv"/>
+                        <outlet property="btCover" destination="bjY-VC-KTn" id="Irf-YK-EXz"/>
+                        <outlet property="ivCover" destination="YRJ-RY-uvX" id="y1i-5i-9W2"/>
+                        <outlet property="tfPlataforma" destination="VOF-Fh-wf5" id="gmh-Cq-Re9"/>
+                        <outlet property="tfTitle" destination="VOF-Fh-wf5" id="odS-Bc-4dM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94f-NQ-LLf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3772" y="1144"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5Co-Ng-6pL"/>
+        <segue reference="aRT-F4-bMQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="console" width="23" height="23"/>

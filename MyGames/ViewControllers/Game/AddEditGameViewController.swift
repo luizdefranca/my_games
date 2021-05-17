@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class AddEditViewController: UIViewController {
+class AddEditGameViewController: UIViewController {
 
     var game: Game!
     
@@ -196,7 +196,7 @@ class AddEditViewController: UIViewController {
 
 } // fim da classe
 
-extension AddEditViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+extension AddEditGameViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     // UIPickerViewDataSource (similar a lógica da tableview)
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -216,7 +216,7 @@ extension AddEditViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 } // fim da classe
 
 
-extension AddEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddEditGameViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // tip. implementando os 2 protocols o evento sera notificando apos user selecionar a imagem
     
