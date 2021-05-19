@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 
+
 class AddEditGameViewController: UIViewController {
 
     var game: Game!
@@ -41,6 +42,19 @@ class AddEditGameViewController: UIViewController {
         prepareDataLayout()
     }
     
+    fileprivate func setupPickerView() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
+        toolbar.tintColor = UIColor(named: "main")
+        let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        let btDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        let btFlexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [btCancel, btFlexibleSpace, btDone]
+        
+        // tip. faz o text field exibir os dados predefinidos pela picker view
+        tfConsole.inputView = pickerView
+        tfConsole.inputAccessoryView = toolbar
+    }
+    
     private func prepareDataLayout() {
         if game != nil {
             title = "Editar jogo"
@@ -60,21 +74,22 @@ class AddEditGameViewController: UIViewController {
                 btCover.setTitle(nil, for: .normal)
             }
         }
-        
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
-        toolbar.tintColor = UIColor(named: "main")
-        let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-        let btDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        let btFlexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.items = [btCancel, btFlexibleSpace, btDone]
-        
-        // tip. faz o text field exibir os dados predefinidos pela picker view
-        tfConsole.inputView = pickerView
-        tfConsole.inputAccessoryView = toolbar
+        if ConsolesManager.shared.consoles.count != 0 {
+            setupPickerView()
+            
+        }
     }
     
     @objc func cancel() {
         tfConsole.resignFirstResponder()
+    }
+    
+    fileprivate func showError() {
+        // TODO mostrar error aqui
+        let alert = UIAlertController(title: "Error", message: "Não há console instalado", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        present(alert, animated: true, completion: nil)
+        cancel()
     }
     
     @objc func done() {
@@ -86,26 +101,12 @@ class AddEditGameViewController: UIViewController {
                 cancel()
             }
         } else {
-            // TODO mostrar error aqui
-            print("TODO mostrar error aqui")
+           //Mostrar error
         }
-        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @IBAction func AddEditCover(_ sender: UIButton) {
-        // para adicionar uma imagem da biblioteca
-        
+    @IBAction func AddEditCover(_ sender: UIButton) {        
         // para adicionar uma imagem da biblioteca
         print("para adicionar uma imagem da biblioteca")
         
@@ -178,7 +179,12 @@ class AddEditGameViewController: UIViewController {
         game.title = tfTitle.text
         game.releaseDate = dpReleaseDate.date
         
-        if !tfConsole.text!.isEmpty {
+        
+        if  ConsolesManager.shared.consoles.count == 0
+                && !tfConsole.text!.isEmpty {
+            ConsolesManager.shared.saveConsole(in: context, withName: tfConsole.text!)
+            game.console = ConsolesManager.shared.consoles[0]
+        } else if !tfConsole.text!.isEmpty {
             let console = ConsolesManager.shared.consoles[pickerView.selectedRow(inComponent: 0)]
             game.console = console
         }

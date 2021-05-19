@@ -5,7 +5,7 @@
 //  Created by Douglas Frari on 4/29/21.
 //
 
-import Foundation
+import UIKit
 
 import CoreData
 
@@ -40,6 +40,18 @@ class ConsolesManager {
         }
     }
  
+    func saveConsole(in context: NSManagedObjectContext, withName name: String, andLogo logo: UIImage = UIImage(named: "console")!){
+        let console = Console(context: context)
+        console.name = name
+        console.logo = logo
+       
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     private init() {
      
     }

@@ -140,38 +140,37 @@
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lI-Xd-Bb5">
-                                <rect key="frame" x="32.5" y="302.5" width="349" height="442"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFr-jE-Ve8">
+                                <rect key="frame" x="25" y="508.5" width="364" height="30"/>
                                 <state key="normal" title="Toque para adicionar a imagem de capa"/>
                                 <connections>
-                                    <action selector="AddEditCover:" destination="3L9-bj-8cU" eventType="touchUpInside" id="2at-nu-OIH"/>
+                                    <action selector="AddEditCover:" destination="3L9-bj-8cU" eventType="primaryActionTriggered" id="eei-aO-Yek"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Idf-JJ-zSr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9lI-Xd-Bb5" firstAttribute="height" secondItem="LAd-Qv-LnS" secondAttribute="height" multiplier="0.975717" id="0Zg-Fx-NgR"/>
                             <constraint firstItem="DW9-BN-EIp" firstAttribute="leading" secondItem="Idf-JJ-zSr" secondAttribute="leading" constant="25" id="1EX-5S-MUF"/>
                             <constraint firstItem="Idf-JJ-zSr" firstAttribute="trailing" secondItem="tZR-MZ-hWy" secondAttribute="trailing" constant="25" id="1fG-Ef-Z7w"/>
                             <constraint firstItem="tZR-MZ-hWy" firstAttribute="leading" secondItem="Idf-JJ-zSr" secondAttribute="leading" constant="25" id="2wZ-CB-vLr"/>
                             <constraint firstItem="DW9-BN-EIp" firstAttribute="top" secondItem="bXT-VM-Mo9" secondAttribute="bottom" constant="18" id="7yB-z8-JIt"/>
-                            <constraint firstItem="9lI-Xd-Bb5" firstAttribute="centerY" secondItem="LAd-Qv-LnS" secondAttribute="centerY" id="E3Y-eB-uPv"/>
                             <constraint firstItem="Idf-JJ-zSr" firstAttribute="trailing" secondItem="6YB-gL-jBj" secondAttribute="trailing" constant="25" id="INz-GB-xln"/>
+                            <constraint firstItem="eFr-jE-Ve8" firstAttribute="centerY" secondItem="LAd-Qv-LnS" secondAttribute="centerY" id="KaD-Al-aNG"/>
                             <constraint firstItem="bXT-VM-Mo9" firstAttribute="top" secondItem="tZR-MZ-hWy" secondAttribute="bottom" constant="18" id="VZ5-eP-H0O"/>
                             <constraint firstItem="6YB-gL-jBj" firstAttribute="leading" secondItem="Idf-JJ-zSr" secondAttribute="leading" constant="25" id="bkn-9U-RFe"/>
+                            <constraint firstItem="eFr-jE-Ve8" firstAttribute="width" secondItem="LAd-Qv-LnS" secondAttribute="width" id="cFc-wx-l6Y"/>
                             <constraint firstItem="LAd-Qv-LnS" firstAttribute="top" secondItem="6YB-gL-jBj" secondAttribute="bottom" constant="8" id="cgo-Jd-KRo"/>
                             <constraint firstItem="4Va-3O-Xpg" firstAttribute="top" secondItem="LAd-Qv-LnS" secondAttribute="bottom" constant="8" id="cwA-ch-xCX"/>
                             <constraint firstItem="Idf-JJ-zSr" firstAttribute="trailing" secondItem="LAd-Qv-LnS" secondAttribute="trailing" constant="25" id="dXe-tM-zMx"/>
-                            <constraint firstItem="9lI-Xd-Bb5" firstAttribute="width" secondItem="LAd-Qv-LnS" secondAttribute="width" multiplier="0.958791" id="ggZ-gM-lkR"/>
                             <constraint firstItem="LAd-Qv-LnS" firstAttribute="leading" secondItem="Idf-JJ-zSr" secondAttribute="leading" constant="25" id="gti-4Z-iNf"/>
+                            <constraint firstItem="eFr-jE-Ve8" firstAttribute="centerX" secondItem="LAd-Qv-LnS" secondAttribute="centerX" id="jPY-ST-hbs"/>
                             <constraint firstItem="bXT-VM-Mo9" firstAttribute="leading" secondItem="Idf-JJ-zSr" secondAttribute="leading" constant="25" id="mgw-NL-H5D"/>
                             <constraint firstItem="Idf-JJ-zSr" firstAttribute="trailing" secondItem="DW9-BN-EIp" secondAttribute="trailing" constant="25" id="ni7-aM-ySl"/>
                             <constraint firstItem="Idf-JJ-zSr" firstAttribute="bottom" secondItem="4Va-3O-Xpg" secondAttribute="bottom" constant="25" id="oXh-ZS-j2s"/>
                             <constraint firstItem="4Va-3O-Xpg" firstAttribute="leading" secondItem="Idf-JJ-zSr" secondAttribute="leading" constant="25" id="p6I-wy-Ak5"/>
                             <constraint firstItem="tZR-MZ-hWy" firstAttribute="top" secondItem="Idf-JJ-zSr" secondAttribute="top" constant="25" id="rqb-GJ-8js"/>
                             <constraint firstItem="Idf-JJ-zSr" firstAttribute="trailing" secondItem="bXT-VM-Mo9" secondAttribute="trailing" constant="25" id="t5K-aC-3Ga"/>
-                            <constraint firstItem="9lI-Xd-Bb5" firstAttribute="centerX" secondItem="LAd-Qv-LnS" secondAttribute="centerX" id="tct-qe-k4H"/>
                             <constraint firstItem="6YB-gL-jBj" firstAttribute="top" secondItem="DW9-BN-EIp" secondAttribute="bottom" constant="4" id="wsV-fH-y5J"/>
                             <constraint firstItem="Idf-JJ-zSr" firstAttribute="trailing" secondItem="4Va-3O-Xpg" secondAttribute="trailing" constant="25" id="y4H-6f-ZSU"/>
                         </constraints>
@@ -179,7 +178,7 @@
                     <navigationItem key="navigationItem" title="Adicionar" largeTitleDisplayMode="never" id="9Yt-w7-37L"/>
                     <connections>
                         <outlet property="btAddEdit" destination="4Va-3O-Xpg" id="QlC-XZ-zRD"/>
-                        <outlet property="btCover" destination="9lI-Xd-Bb5" id="Eou-aK-ABh"/>
+                        <outlet property="btCover" destination="eFr-jE-Ve8" id="bQs-fJ-Qzo"/>
                         <outlet property="dpReleaseDate" destination="giL-ND-ECX" id="eF2-YS-RK1"/>
                         <outlet property="ivCover" destination="LAd-Qv-LnS" id="x4t-8T-DbD"/>
                         <outlet property="tfConsole" destination="bXT-VM-Mo9" id="wf6-cY-OVN"/>
@@ -188,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvf-UG-apx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5001" y="359"/>
+            <point key="canvasLocation" x="4523" y="382"/>
         </scene>
         <!--Jogos-->
         <scene sceneID="Sei-QO-cPH">
@@ -224,7 +223,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="separatorColor" name="second"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Ggk-Ac-jBt" style="IBUITableViewCellStyleDefault" id="fCM-75-mho">
                                 <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>
@@ -252,14 +250,14 @@
                     <navigationItem key="navigationItem" title="Plataformas" id="XAV-gp-SuW">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="E06-X9-Nuh">
                             <connections>
-                                <action selector="addConsole:" destination="Cga-Qi-dNa" id="xYZ-Ea-zAs"/>
+                                <segue destination="MIs-dn-HaJ" kind="show" id="eEN-SN-3Qq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5P0-Sf-wRP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2620.289855072464" y="973.66071428571422"/>
+            <point key="canvasLocation" x="2729" y="894"/>
         </scene>
         <!--Visualizar-->
         <scene sceneID="Lmx-lv-Xib">
@@ -382,38 +380,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome da plataforma" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOF-Fh-wf5">
-                                <rect key="frame" x="25" y="69" width="364" height="34"/>
+                                <rect key="frame" x="25" y="113" width="364" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YRJ-RY-uvX">
-                                <rect key="frame" x="25" y="271" width="364" height="364"/>
+                                <rect key="frame" x="25" y="268.5" width="364" height="364"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YRJ-RY-uvX" secondAttribute="height" multiplier="1:1" id="jVl-SD-Zfl"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-T5-HF9">
-                                <rect key="frame" x="25" y="807" width="364" height="30"/>
+                                <rect key="frame" x="25" y="758" width="364" height="30"/>
                                 <color key="backgroundColor" name="second"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="SALVAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="addEditGame:" destination="MIs-dn-HaJ" eventType="touchUpInside" id="Q1h-ne-EsN"/>
+                                    <action selector="saveConsole:" destination="MIs-dn-HaJ" eventType="touchUpInside" id="w4v-DA-4za"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1t-7S-6WE">
-                                <rect key="frame" x="25" y="245" width="364" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1t-7S-6WE">
+                                <rect key="frame" x="25" y="242.5" width="364" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjY-VC-KTn">
-                                <rect key="frame" x="70.5" y="438" width="273" height="30"/>
+                                <rect key="frame" x="70.5" y="435.5" width="273" height="30"/>
                                 <state key="normal" title="Toque para adicionar a imagem de capa"/>
                                 <connections>
-                                    <action selector="AddEditCover:" destination="MIs-dn-HaJ" eventType="touchUpInside" id="eVj-Ab-1XP"/>
+                                    <action selector="AddLogo:" destination="MIs-dn-HaJ" eventType="touchUpInside" id="eVj-Ab-1XP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -440,16 +438,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Adicionar" largeTitleDisplayMode="never" id="0Ur-YG-NgI"/>
                     <connections>
-                        <outlet property="btAddEdit" destination="zJO-T5-HF9" id="9uP-W0-qKv"/>
-                        <outlet property="btCover" destination="bjY-VC-KTn" id="Irf-YK-EXz"/>
-                        <outlet property="ivCover" destination="YRJ-RY-uvX" id="y1i-5i-9W2"/>
-                        <outlet property="tfPlataforma" destination="VOF-Fh-wf5" id="gmh-Cq-Re9"/>
-                        <outlet property="tfTitle" destination="VOF-Fh-wf5" id="odS-Bc-4dM"/>
+                        <outlet property="ivLogo" destination="YRJ-RY-uvX" id="Ug4-0F-EFz"/>
+                        <outlet property="tfNome" destination="VOF-Fh-wf5" id="hzY-9P-gms"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94f-NQ-LLf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3772" y="1144"/>
+            <point key="canvasLocation" x="3732" y="1201"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

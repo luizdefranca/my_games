@@ -57,7 +57,6 @@ class GamesTableViewController: UITableViewController {
         searchController.definesPresentationContext = true
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
-
     }
     
     // valor default evita precisar ser obrigado a passar o argumento quando chamado

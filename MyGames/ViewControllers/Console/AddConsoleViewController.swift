@@ -9,18 +9,18 @@ import UIKit
 import Photos
 
 class AddConsoleViewController: UIViewController {
+    
+    //MARK: - Outlets
+    
+    @IBOutlet weak var tfNome: UITextField!
+    
+    @IBOutlet weak var ivLogo: UIImageView!
+    
+    
+    
+    //MARK: - Proprieties
+    let logo = UIImage(named: "console")
 
-//MARK: - Outlets
-    
-    @IBOutlet weak var tfPlataforma: UITextField!
-    
-    @IBOutlet weak var ivCover: UIImageView!
-    
-    
-    
-//MARK: - Proprieties
-    // tip. Lazy somente constroi a classe quando for usar
-  
     
     private func chooseImageFromLibrary(sourceType: UIImagePickerController.SourceType) {
         
@@ -60,6 +60,39 @@ class AddConsoleViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func saveConsole(_ sender: Any) {
+        let nome = tfNome.text
+        
+        ConsolesManager.shared.saveConsole(in: context, withName: nome!, andLogo: logo!)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func AddLogo(_ sender: UIButton) {
+        // para adicionar uma imagem da biblioteca
+        print("para adicionar uma imagem da biblioteca")
+        
+        
+        let alert = UIAlertController(title: "Selecionar o logo", message: "De onde você quer escolher o logo?", preferredStyle: .actionSheet)
+        
+        let libraryAction = UIAlertAction(title: "Biblioteca de fotos", style: .default, handler: {(action: UIAlertAction) in
+            self.selectPicture(sourceType: .photoLibrary)
+        })
+        alert.addAction(libraryAction)
+        
+        let photosAction = UIAlertAction(title: "Album de fotos", style: .default, handler: {(action: UIAlertAction) in
+            self.selectPicture(sourceType: .savedPhotosAlbum)
+        })
+        alert.addAction(photosAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+      present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
 }
 
 
@@ -75,14 +108,9 @@ extension AddConsoleViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            
-            // ImageView won't update with new image
-            // bug fixed: https://stackoverflow.com/questions/42703795/imageview-wont-update-with-new-image
             DispatchQueue.main.async {
-                self.ivCover.image = pickedImage
-                self.ivCover.setNeedsDisplay()
-//                self.btCover.setTitle(nil, for: .normal)
-//                self.btCover.setNeedsDisplay()
+                self.ivLogo.image = pickedImage
+                self.ivLogo.setNeedsDisplay()
             }
         }
         
