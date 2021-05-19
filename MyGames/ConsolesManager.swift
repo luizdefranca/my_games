@@ -47,6 +47,7 @@ class ConsolesManager {
        
         do {
             try context.save()
+
         } catch {
             print(error.localizedDescription)
         }

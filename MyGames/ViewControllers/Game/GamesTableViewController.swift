@@ -12,6 +12,7 @@ import CoreData
 class GamesTableViewController: UITableViewController {
 
     //MARK: - Proprieties
+    
     var fetchedResultController: NSFetchedResultsController<Game>!
     
     // tip. podemos passar qual view vai gerenciar a busca. Neste caso a própria viewController (logo usei nil)

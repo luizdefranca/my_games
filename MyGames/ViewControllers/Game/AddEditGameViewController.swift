@@ -8,8 +8,19 @@
 import UIKit
 import Photos
 
+protocol AddEditGameProtocol: AnyObject {
 
-class AddEditGameViewController: UIViewController {
+    func uploadData()
+}
+
+class AddEditGameViewController: UIViewController, AddEditGameProtocol {
+    func uploadData() {
+        print("upload.. Data")
+        prepareDataLayout()
+        dump(ConsolesManager.shared.consoles)
+        pickerView.reloadAllComponents()
+    }
+
 
     var game: Game!
     
@@ -40,19 +51,23 @@ class AddEditGameViewController: UIViewController {
         super.viewWillAppear(animated)
         
         prepareDataLayout()
+        setupPickerView()
     }
+
     
     fileprivate func setupPickerView() {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
         toolbar.tintColor = UIColor(named: "main")
         let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        let btCreate = UIBarButtonItem(title: "Create", style: UIBarButtonItem.Style.plain, target: self, action: #selector(create))
         let btDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         let btFlexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.items = [btCancel, btFlexibleSpace, btDone]
+        toolbar.items = [btCancel, btFlexibleSpace, btCreate, btDone]
         
         // tip. faz o text field exibir os dados predefinidos pela picker view
         tfConsole.inputView = pickerView
         tfConsole.inputAccessoryView = toolbar
+
     }
     
     private func prepareDataLayout() {
@@ -74,16 +89,10 @@ class AddEditGameViewController: UIViewController {
                 btCover.setTitle(nil, for: .normal)
             }
         }
-        if ConsolesManager.shared.consoles.count != 0 {
-            setupPickerView()
-            
-        }
+
     }
-    
-    @objc func cancel() {
-        tfConsole.resignFirstResponder()
-    }
-    
+
+
     fileprivate func showError() {
         // TODO mostrar error aqui
         let alert = UIAlertController(title: "Error", message: "Não há console instalado", preferredStyle: .alert)
@@ -91,8 +100,28 @@ class AddEditGameViewController: UIViewController {
         present(alert, animated: true, completion: nil)
         cancel()
     }
-    
-    @objc func done() {
+
+
+    @objc private func cancel() {
+        tfConsole.resignFirstResponder()
+    }
+
+    @objc private func create(){
+        guard let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddConsole") as? AddConsoleViewController else {
+
+            print("Cannot Instantiate AddConsoleViewController - \(#file) - \(#function) - \(#line)")
+            return
+        }
+
+        viewController.originViewController = self
+        viewController.modalPresentationStyle = .automatic
+        viewController.modalTransitionStyle = .flipHorizontal
+        viewController.delegate = self
+        showDetailViewController(viewController, sender: self)
+//        present(viewController, animated: true, completion: nil)
+
+    }
+    @objc private func done() {
         if ConsolesManager.shared.consoles.count != 0 {
             let index = pickerView.selectedRow(inComponent: 0)
             if index != -1 {
@@ -180,11 +209,12 @@ class AddEditGameViewController: UIViewController {
         game.releaseDate = dpReleaseDate.date
         
         
-        if  ConsolesManager.shared.consoles.count == 0
-                && !tfConsole.text!.isEmpty {
-            ConsolesManager.shared.saveConsole(in: context, withName: tfConsole.text!)
-            game.console = ConsolesManager.shared.consoles[0]
-        } else if !tfConsole.text!.isEmpty {
+//        if  ConsolesManager.shared.consoles.count == 0
+//                && !tfConsole.text!.isEmpty {
+//            ConsolesManager.shared.saveConsole(in: context, withName: tfConsole.text!)
+//            game.console = ConsolesManager.shared.consoles[0]
+//        } else
+        if !tfConsole.text!.isEmpty {
             let console = ConsolesManager.shared.consoles[pickerView.selectedRow(inComponent: 0)]
             game.console = console
         }

@@ -15,12 +15,14 @@ class AddConsoleViewController: UIViewController {
     @IBOutlet weak var tfNome: UITextField!
     
     @IBOutlet weak var ivLogo: UIImageView!
-    
+
+    //MARK: - Delegates
+    weak var delegate: AddEditGameProtocol?
     
     
     //MARK: - Proprieties
     let logo = UIImage(named: "console")
-
+    var originViewController : UIViewController = UIViewController()
     
     private func chooseImageFromLibrary(sourceType: UIImagePickerController.SourceType) {
         
@@ -62,10 +64,19 @@ class AddConsoleViewController: UIViewController {
     
     
     @IBAction func saveConsole(_ sender: Any) {
+
         let nome = tfNome.text
         
         ConsolesManager.shared.saveConsole(in: context, withName: nome!, andLogo: logo!)
-        navigationController?.popViewController(animated: true)
+
+        if self.originViewController .isKind(of: AddEditGameViewController.self){
+            delegate?.uploadData()
+            (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            dismiss(animated: true, completion: nil)
+        } else {
+
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func AddLogo(_ sender: UIButton) {
