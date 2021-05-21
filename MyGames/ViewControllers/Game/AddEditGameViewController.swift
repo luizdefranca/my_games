@@ -97,10 +97,10 @@ class AddEditGameViewController: UIViewController, AddEditGameProtocol {
         // TODO mostrar error aqui
         let alert = UIAlertController(title: "Error", message: "Não há console instalado", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
         present(alert, animated: true, completion: nil)
         cancel()
     }
-
 
     @objc private func cancel() {
         tfConsole.resignFirstResponder()
@@ -118,8 +118,6 @@ class AddEditGameViewController: UIViewController, AddEditGameProtocol {
         viewController.modalTransitionStyle = .flipHorizontal
         viewController.delegate = self
         showDetailViewController(viewController, sender: self)
-//        present(viewController, animated: true, completion: nil)
-
     }
     @objc private func done() {
         if ConsolesManager.shared.consoles.count != 0 {
